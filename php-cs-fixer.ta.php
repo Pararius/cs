@@ -1,12 +1,6 @@
 <?php
 
 return (new PhpCsFixer\Config('standards'))
-    ->setFinder(
-        (new PhpCsFixer\Finder())->in([
-            __DIR__ . '/src',
-            __DIR__ . '/tests',
-        ])
-    )
     ->setRiskyAllowed(true)
     ->setRules([
         '@PhpCsFixer' => true,
