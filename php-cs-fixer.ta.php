@@ -1,13 +1,22 @@
 <?php
 
+use PhpCsFixer\RuleSet\Sets\PhpCsFixerSet;
+
+$csFixerSet = new PhpCsFixerSet();
+
 return (new PhpCsFixer\Config('standards'))
     ->setRiskyAllowed(true)
     ->setRules([
         '@PhpCsFixer' => true,
         '@Symfony:risky' => true,
-        '@PHP80Migration' => true,
-        '@PHP80Migration:risky' => true,
-        '@PHPUnit84Migration:risky' => true,
+        'blank_line_before_statement' => [
+            // don't put lines between "case" statements
+            'statements' => array_filter(
+                $csFixerSet->getRules()['blank_line_before_statement']['statements'],
+                static fn (string $statement): bool => $statement !== 'case',
+            )
+        ],
+        'blank_line_between_import_groups' => false,
         'concat_space' => [
             'spacing' => 'one',
         ],
@@ -26,6 +35,13 @@ return (new PhpCsFixer\Config('standards'))
             'import_constants' => true,
         ],
         'no_superfluous_phpdoc_tags' => true,
+        'ordered_imports' => [
+            'imports_order' => [
+                'const',
+                'class',
+                'function',
+            ],
+        ],
         'phpdoc_add_missing_param_annotation' => false,
         'php_unit_internal_class' => false,
         'php_unit_method_casing' => [
