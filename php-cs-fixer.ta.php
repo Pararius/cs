@@ -20,6 +20,7 @@ return (new PhpCsFixer\Config('standards'))
         'concat_space' => [
             'spacing' => 'one',
         ],
+        'declare_strict_types' => true,
         'general_phpdoc_annotation_remove' => [
             'annotations' => [
                 'author',
@@ -33,6 +34,7 @@ return (new PhpCsFixer\Config('standards'))
         'global_namespace_import' => [
             'import_classes' => true,
             'import_constants' => true,
+            'import_functions' => true,
         ],
         'no_superfluous_phpdoc_tags' => true,
         'ordered_imports' => [
@@ -43,6 +45,7 @@ return (new PhpCsFixer\Config('standards'))
             ],
         ],
         'phpdoc_add_missing_param_annotation' => false,
+        'phpdoc_to_comment' => false,
         'php_unit_internal_class' => false,
         'php_unit_method_casing' => [
             'case' => 'snake_case',
